@@ -2152,7 +2152,7 @@ if __name__ == "__main__":
           SmoothScroller.snapToTop();
           const welcomeEntry = createAuroraEntry(false, true);
           const writer = createAtomicAuroraWriter(welcomeEntry, false);
-          writer.appendChunk(INITIAL_GREETING);
+          writer.appendChunk(getInitialGreeting());
           writer.finalize(true);
           showToast('对话画布已重置');
         }, 260);
@@ -2263,7 +2263,7 @@ if __name__ == "__main__":
 
         const initialEntry = createAuroraEntry(false, true);
         const writer = createAtomicAuroraWriter(initialEntry, false);
-        writer.appendChunk(INITIAL_GREETING);
+        writer.appendChunk(getInitialGreeting());
         writer.finalize(true);
       }
 

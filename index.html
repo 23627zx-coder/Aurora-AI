@@ -814,7 +814,13 @@
          1. 全局状态、触觉反馈工具与预设配置
          ========================================================================= */
       const DEFAULT_SYSTEM_PROMPT = '你是 Aurora-Weave（极光编织），由创始人江城依旧主导开发的 AURORA 极光智能核心。';
-      const INITIAL_GREETING = '系统已上线，等待您的指令，江城依旧。';
+            function getInitialGreeting() {
+        const hour = new Date().getHours();
+        if (hour >= 0 && hour < 6) return '[00:00-06:00 暗夜协议] 系统监测到夜行者接入。我能为你做什么？';
+        if (hour >= 6 && hour < 12) return '[06:00-12:00 晨光编译] 晨光数据流已注入。我能为你做什么？';
+        if (hour >= 12 && hour < 18) return '[12:00-18:00 高频运转] 核心温度正常。我能为你做什么？';
+        return '[18:00-24:00 深空跃迁] 极光频谱已调至夜间模式。我能为你做什么？';
+      }
 
       const SPEED_CONFIG = {
         poetic:   { label: '细腻飘逸', intervalMs: 36, jitterMs: 14, charsPerFrame: 1 },

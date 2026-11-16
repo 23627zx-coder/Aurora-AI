@@ -14,10 +14,9 @@
       --text-offwhite: #F1F5F9;
       --aurora-cyan: #00F0FF;
       --aurora-blue: #3B82F6;
-      --aurora-indigo: #6366F1;
-      --aurora-purple: #A855F7;
-      --aurora-magenta: #EC4899;
       --aurora-emerald: #34D399;
+      --aurora-violet: #8B5CF6;
+      --aurora-magenta: #E879F9;
       --scan-intensity: 1;
     }
 
@@ -41,20 +40,20 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* 极克制的深空环境极光漫反射光晕 */
+    /* 深空黑曜石背景环境极光径向微光 */
     .ambient-nebula-top {
       position: fixed;
       top: -18vh;
       left: 50%;
       transform: translateX(-50%);
-      width: min(92vw, 960px);
+      width: min(94vw, 980px);
       height: 36vh;
       border-radius: 9999px;
       background: radial-gradient(
         ellipse at center,
         rgba(0, 240, 255, 0.065) 0%,
-        rgba(99, 102, 241, 0.04) 46%,
-        rgba(236, 72, 153, 0.02) 72%,
+        rgba(139, 92, 246, 0.042) 48%,
+        rgba(232, 121, 249, 0.02) 74%,
         transparent 100%
       );
       filter: blur(48px);
@@ -67,13 +66,14 @@
       bottom: -16vh;
       left: 50%;
       transform: translateX(-50%);
-      width: min(88vw, 880px);
+      width: min(90vw, 900px);
       height: 30vh;
       border-radius: 9999px;
       background: radial-gradient(
         ellipse at center,
         rgba(59, 130, 246, 0.05) 0%,
-        rgba(168, 85, 247, 0.035) 52%,
+        rgba(52, 211, 153, 0.03) 48%,
+        rgba(139, 92, 246, 0.025) 72%,
         transparent 100%
       );
       filter: blur(46px);
@@ -83,13 +83,13 @@
 
     /* 固定极简毛玻璃顶栏 */
     .aurora-topbar {
-      background: rgba(5, 7, 13, 0.78);
+      background: rgba(5, 7, 13, 0.8);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
     }
 
-    /* 左上角 AURORA 宽字距极光渐变字标 */
+    /* 左上角 AURORA 几何极光渐变字标 */
     .aurora-brand-wordmark {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-weight: 700;
@@ -97,10 +97,10 @@
       background: linear-gradient(
         90deg,
         #00F0FF 0%,
-        #3B82F6 26%,
-        #6366F1 52%,
-        #A855F7 78%,
-        #EC4899 100%
+        #3B82F6 28%,
+        #34D399 52%,
+        #8B5CF6 76%,
+        #E879F9 100%
       );
       -webkit-background-clip: text;
       background-clip: text;
@@ -112,21 +112,13 @@
        莫比乌斯 ∞ 极光路径双向逆流 & 3D 谐波微旋动效
        ========================================================================= */
     @keyframes mobiusSilkForward {
-      0% {
-        stroke-dashoffset: 200;
-      }
-      100% {
-        stroke-dashoffset: 0;
-      }
+      0% { stroke-dashoffset: 200; }
+      100% { stroke-dashoffset: 0; }
     }
 
     @keyframes mobiusSilkCounter {
-      0% {
-        stroke-dashoffset: 0;
-      }
-      100% {
-        stroke-dashoffset: 200;
-      }
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 200; }
     }
 
     .mobius-silk-primary {
@@ -139,7 +131,7 @@
       animation: mobiusSilkCounter 7.2s cubic-bezier(0.42, 0, 0.58, 1) infinite;
     }
 
-    /* 中心翡翠-白光胶囊核心呼吸脉动（基准点 279px, 177.5px） */
+    /* 中心翡翠-白光胶囊核心呼吸脉动（基准点 279px, 177.5px，倾斜 -33.3deg） */
     @keyframes coreCapsulePulse {
       0%, 100% {
         opacity: 0.92;
@@ -156,7 +148,7 @@
       animation: coreCapsulePulse 2.8s ease-in-out infinite;
     }
 
-    /* 静息态 ±3.5° 柔和 3D 谐波微旋 */
+    /* 静息态 ±3.5deg 柔和 3D 谐波微旋（0deg 正立基准） */
     @keyframes mobiusHarmonicIdle {
       0%, 100% {
         transform: perspective(420px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
@@ -172,7 +164,7 @@
       }
     }
 
-    /* 流式输出态 ±8° 灵动 3D 轨道微旋 */
+    /* 流式输出态 ±8deg 灵动 3D 轨道微旋 */
     @keyframes mobiusHarmonicStreaming {
       0%, 100% {
         transform: perspective(420px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1.02);
@@ -199,7 +191,7 @@
       animation: mobiusHarmonicStreaming 2.8s ease-in-out infinite;
       filter:
         drop-shadow(0 0 8px rgba(0, 240, 255, 0.55))
-        drop-shadow(0 0 14px rgba(236, 72, 153, 0.36));
+        drop-shadow(0 0 14px rgba(232, 121, 249, 0.36));
     }
 
     .mobius-harmonic-swirl.is-streaming .mobius-silk-primary {
@@ -215,30 +207,24 @@
     }
 
     /* =========================================================================
-       局部细长极光扫描光带（严格裁剪在当前 AI 对话块顶部 26px 宽度内）
+       局部 1.5px 细长极光扫描光带（严格裁剪在当前 AI 对话块顶部 24px 条带内）
        ========================================================================= */
     @keyframes auroraScannerGlide {
-      0% {
-        transform: translateX(-24%);
-      }
-      50% {
-        transform: translateX(152%);
-      }
-      100% {
-        transform: translateX(-24%);
-      }
+      0% { transform: translateX(-26%); }
+      50% { transform: translateX(154%); }
+      100% { transform: translateX(-26%); }
     }
 
     .aurora-scan-zone {
       position: relative;
       width: 100%;
-      height: 26px;
-      max-height: 26px;
-      margin-bottom: -14px;
+      height: 24px;
+      max-height: 24px;
+      margin-bottom: -12px;
       overflow: hidden;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.48s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .aurora-dialogue-block.is-streaming .aurora-scan-zone {
@@ -255,15 +241,15 @@
       background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(0, 240, 255, 0.9) 24%,
+        rgba(0, 240, 255, 0.92) 24%,
         #34D399 52%,
-        rgba(168, 85, 247, 0.92) 78%,
+        rgba(139, 92, 246, 0.92) 78%,
         transparent 100%
       );
       box-shadow:
         0 0 9px rgba(0, 240, 255, 0.65),
         0 0 14px rgba(52, 211, 153, 0.55);
-      animation: auroraScannerGlide 3.1s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      animation: auroraScannerGlide 3.0s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
       will-change: transform;
     }
 
@@ -272,109 +258,153 @@
       top: 1px;
       left: 0;
       width: 42%;
-      height: 24px;
+      height: 22px;
       background: radial-gradient(
         ellipse 50% 95% at 50% 0%,
         rgba(0, 240, 255, 0.2) 0%,
         rgba(52, 211, 153, 0.13) 44%,
-        rgba(168, 85, 247, 0.08) 74%,
+        rgba(139, 92, 246, 0.08) 74%,
         transparent 100%
       );
-      animation: auroraScannerGlide 3.1s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      animation: auroraScannerGlide 3.0s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
       will-change: transform;
     }
 
     /* =========================================================================
-       增量字符弧线显影动效 (Incremental Character Arc-Reveal)
+       原子级单帧同步：字符 150ms 弧线显影 + 极光光核光标精准贴合
        ========================================================================= */
-    @keyframes auroraCharArcIn {
+    @keyframes auroraCharCurveReveal {
       0% {
-        opacity: 0;
-        transform: translate(-10px, 5px) rotate(-1.5deg) scale(0.93);
-        filter: blur(2.6px);
+        opacity: 0.12;
+        transform: translate(-3px, 1.5px) scale(0.96);
         color: #00F0FF;
-        text-shadow: 0 0 11px rgba(0, 240, 255, 0.72);
+        text-shadow: 0 0 9px rgba(0, 240, 255, 0.85);
       }
-      50% {
+      55% {
         opacity: 1;
-        transform: translate(-2px, 1px) rotate(-0.3deg) scale(1.01);
-        filter: blur(0.35px);
-        color: #EC4899;
-        text-shadow: 0 0 8px rgba(236, 72, 153, 0.48);
+        transform: translate(-0.6px, 0.3px) scale(1.01);
+        color: #34D399;
+        text-shadow: 0 0 6px rgba(52, 211, 153, 0.55);
       }
       100% {
         opacity: 1;
-        transform: translate(0, 0) rotate(0deg) scale(1);
-        filter: blur(0px);
-        color: inherit;
+        transform: translate(0, 0) scale(1);
+        color: #F1F5F9;
         text-shadow: none;
       }
     }
 
     .aurora-char {
       display: inline-block;
-      animation: auroraCharArcIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      will-change: transform, opacity, filter, color;
+      animation: auroraCharCurveReveal 150ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      will-change: transform, opacity, color;
     }
 
-    /* 翡翠-亮白极光能量光标 */
-    @keyframes auroraCursorDotPulse {
+    /* 紧紧锁定在当前渲染字符边缘的极光能量光标 */
+    @keyframes auroraCursorIdleBreath {
       0%, 100% {
         opacity: 1;
         transform: scale(1);
-        box-shadow: 0 0 8px #34D399, 0 0 16px rgba(0, 240, 255, 0.85);
+        box-shadow: 0 0 7px #34D399, 0 0 15px rgba(0, 240, 255, 0.9);
       }
       50% {
-        opacity: 0.42;
-        transform: scale(0.76);
-        box-shadow: 0 0 4px #34D399, 0 0 8px rgba(0, 240, 255, 0.4);
+        opacity: 0.48;
+        transform: scale(0.82);
+        box-shadow: 0 0 4px #34D399, 0 0 8px rgba(0, 240, 255, 0.45);
       }
     }
 
-    .aurora-cursor-dot {
+    @keyframes auroraCursorTokenTick {
+      0% {
+        transform: scale(1.38);
+        box-shadow: 0 0 10px #FFFFFF, 0 0 18px #00F0FF, 0 0 24px rgba(52, 211, 153, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 7px #34D399, 0 0 14px rgba(0, 240, 255, 0.85);
+      }
+    }
+
+    .aurora-cursor {
       display: inline-block;
-      width: 6.5px;
-      height: 6.5px;
-      margin-left: 5px;
+      width: 6px;
+      height: 6px;
+      margin-left: 2px;
       vertical-align: middle;
       border-radius: 9999px;
-      background: radial-gradient(circle, #FFFFFF 22%, #6EE7B7 64%, #00F0FF 100%);
-      animation: auroraCursorDotPulse 0.85s ease-in-out infinite;
+      background: radial-gradient(circle, #FFFFFF 28%, #6EE7B7 68%, #00F0FF 100%);
+      animation: auroraCursorIdleBreath 0.82s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .aurora-cursor.is-ticking {
+      animation: auroraCursorTokenTick 150ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* 清空对话时的 260ms 向上微移淡出过渡 */
+    .chat-clearing-out {
+      opacity: 0 !important;
+      transform: translateY(-10px) !important;
+      transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 260ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+    }
+
+    @keyframes chatWelcomeFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-welcome-enter {
+      animation: chatWelcomeFadeIn 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* 触控按压反馈增强 */
+    .tactile-press {
+      transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tactile-press:active {
+      transform: scale(0.94);
     }
 
     /* 底部悬浮极简指令舱 */
     .floating-input-bar {
-      background: rgba(11, 15, 25, 0.72);
+      background: rgba(11, 15, 25, 0.78);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 18px 42px -12px rgba(0, 0, 0, 0.85);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      box-shadow: 0 18px 42px -12px rgba(0, 0, 0, 0.88);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, transform 0.16s ease;
     }
 
     .floating-input-bar:focus-within {
-      background: rgba(13, 18, 30, 0.88);
-      border-color: rgba(0, 240, 255, 0.36);
+      background: rgba(13, 18, 30, 0.92);
+      border-color: rgba(0, 240, 255, 0.42);
       box-shadow:
-        0 20px 46px -12px rgba(0, 0, 0, 0.88),
-        0 0 28px -6px rgba(0, 240, 255, 0.16);
+        0 20px 46px -12px rgba(0, 0, 0, 0.9),
+        0 0 28px -6px rgba(0, 240, 255, 0.2);
     }
 
     /* 极光渐变发送按钮 */
     .btn-aurora-send {
-      background: linear-gradient(135deg, #00F0FF 0%, #3B82F6 48%, #EC4899 100%);
+      background: linear-gradient(135deg, #00F0FF 0%, #3B82F6 48%, #E879F9 100%);
       background-size: 165% 165%;
-      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .btn-aurora-send:hover {
       background-position: 100% 50%;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35), 0 0 22px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35), 0 0 22px rgba(232, 121, 249, 0.3);
       transform: translateY(-1px);
     }
 
     .btn-aurora-send:active {
-      transform: scale(0.96);
+      transform: scale(0.94);
     }
 
     /* 隐形优雅滚动条 */
@@ -386,11 +416,11 @@
       background: transparent;
     }
     .editorial-scroll::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.14);
+      background: rgba(148, 163, 184, 0.16);
       border-radius: 999px;
     }
     .editorial-scroll::-webkit-scrollbar-thumb:hover {
-      background: rgba(0, 240, 255, 0.3);
+      background: rgba(0, 240, 255, 0.32);
     }
 
     .no-scrollbar::-webkit-scrollbar {
@@ -403,10 +433,10 @@
 
     /* 右侧配置抽屉过渡 */
     .drawer-backdrop {
-      transition: opacity 0.3s ease;
+      transition: opacity 0.28s ease;
     }
     .drawer-panel {
-      transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .code-font {
@@ -417,7 +447,7 @@
 <body class="relative flex flex-col justify-between selection:bg-cyan-500/25 selection:text-cyan-200">
 
   <!-- =========================================================================
-       全局共享持久化 SVG 渐变与发光滤镜定义（零重复 ID，所有莫比乌斯徽标实例共享）
+       全局共享持久化 SVG 渐变与发光滤镜定义（单一全局 <defs>，零重复 ID 冲突）
        ========================================================================= -->
   <svg class="w-0 h-0 absolute pointer-events-none" aria-hidden="true" focusable="false">
     <defs>
@@ -436,11 +466,11 @@
         <stop offset="100%" stop-color="#1D4ED8"/>
       </linearGradient>
 
-      <!-- 中段 3D 折叠斜桥：电光蓝 -> 靛紫 -->
+      <!-- 中段 3D 折叠斜桥：电光蓝 #3B82F6 -> 靛紫 #8B5CF6 -->
       <linearGradient id="auroraCenterCobalt" x1="194" y1="94" x2="332" y2="262" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#1D4ED8"/>
         <stop offset="50%" stop-color="#3B82F6"/>
-        <stop offset="100%" stop-color="#6366F1"/>
+        <stop offset="100%" stop-color="#8B5CF6"/>
       </linearGradient>
 
       <!-- 折叠折痕阴影 -->
@@ -449,32 +479,32 @@
         <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0"/>
       </linearGradient>
 
-      <!-- 右翼主飘带：靛紫 #6366F1 -> 兰花紫 #A855F7 -> 品红 #EC4899 -->
+      <!-- 右翼主飘带：靛紫 #8B5CF6 -> 品红 #E879F9 -->
       <linearGradient id="auroraRightWing" x1="300" y1="258" x2="482" y2="22" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#6366F1"/>
-        <stop offset="35%" stop-color="#A855F7"/>
-        <stop offset="72%" stop-color="#D946EF"/>
-        <stop offset="100%" stop-color="#EC4899"/>
+        <stop offset="38%" stop-color="#8B5CF6"/>
+        <stop offset="74%" stop-color="#C084FC"/>
+        <stop offset="100%" stop-color="#E879F9"/>
       </linearGradient>
 
       <!-- 右上内侧细锥渐变 -->
       <linearGradient id="auroraRightTaper" x1="298" y1="165" x2="482" y2="22" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#4F46E5"/>
-        <stop offset="52%" stop-color="#9333EA"/>
-        <stop offset="100%" stop-color="#EC4899"/>
+        <stop offset="52%" stop-color="#8B5CF6"/>
+        <stop offset="100%" stop-color="#E879F9"/>
       </linearGradient>
 
       <!-- 双向丝绸光流渐变 1（正向） -->
       <linearGradient id="auroraSilkPrimary" x1="42" y1="306" x2="482" y2="22" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#00F0FF"/>
-        <stop offset="48%" stop-color="#6EE7B7"/>
-        <stop offset="100%" stop-color="#EC4899"/>
+        <stop offset="48%" stop-color="#34D399"/>
+        <stop offset="100%" stop-color="#E879F9"/>
       </linearGradient>
 
       <!-- 双向丝绸光流渐变 2（逆向） -->
       <linearGradient id="auroraSilkCounter" x1="482" y1="22" x2="42" y2="306" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#EC4899"/>
-        <stop offset="50%" stop-color="#A855F7"/>
+        <stop offset="0%" stop-color="#E879F9"/>
+        <stop offset="50%" stop-color="#8B5CF6"/>
         <stop offset="100%" stop-color="#00F0FF"/>
       </linearGradient>
 
@@ -500,39 +530,32 @@
     </defs>
   </svg>
 
-  <!-- 极克制的深空环境极光漫反射光晕 -->
+  <!-- 深空黑曜石环境极光漫反射光晕 -->
   <div class="ambient-nebula-top"></div>
   <div class="ambient-nebula-bottom"></div>
 
-  <!-- 实时鼠标、触控与滚动交互极光轨迹画布（z-index: 40，pointer-events: none 零阻挡） -->
+  <!-- 实时鼠标、触控与滚动交互极光轨迹画布（带低端安卓智能降级） -->
   <canvas id="auroraTrailCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-40"></canvas>
 
   <!-- 固定极简毛玻璃顶栏 -->
-  <header class="aurora-topbar sticky top-0 z-30 w-full shrink-0 px-4 sm:px-6 py-2.5 sm:py-3">
+  <header class="aurora-topbar sticky top-0 z-30 w-full shrink-0 px-4 sm:px-6 py-2">
     <div class="max-w-[960px] mx-auto flex items-center justify-between gap-3">
-      <!-- 左上角紧凑品牌锁区：46px x 29px 正立莫比乌斯徽标 + AURORA 渐变字标 -->
+      <!-- 左上角紧凑品牌锁区：正立 46x29px 莫比乌斯徽标 + AURORA 单字几何渐变字标 -->
       <div class="flex items-center gap-2.5 sm:gap-3 select-none">
         <div class="w-[46px] h-[29px] shrink-0 flex items-center justify-center">
           <svg class="mobius-harmonic-swirl w-full h-full drop-shadow-[0_2px_10px_rgba(0,240,255,0.24)]" viewBox="0 0 520 330" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AURORA 莫比乌斯极光徽标">
-            <!-- 左拱与左下锐角顶点 -->
             <path d="M 42 306 C 68 232, 95 170, 110 152 C 138 117, 174 88, 198 92 C 208 94, 215 104, 220 116 L 194 132 C 172 132, 148 158, 136 176 C 116 206, 94 246, 78 282 L 258 192 L 260 190 L 42 306 Z"
                   fill="url(#auroraLeftOuter)"/>
             <path d="M 42 306 L 78 282 C 94 246, 116 206, 136 176 C 148 158, 172 132, 194 132 L 186 116 C 162 118, 136 146, 122 168 C 100 202, 74 250, 42 306 Z"
                   fill="url(#auroraLeftRoyal)" opacity="0.92"/>
-
-            <!-- 中段 3D 折叠斜桥 -->
             <path d="M 198 92 C 214 96, 232 122, 254 152 L 276 180 C 296 206, 314 232, 326 244 C 332 250, 336 256, 336 264 L 316 252 C 302 240, 282 214, 260 186 L 240 160 C 220 135, 204 128, 194 132 Z"
                   fill="url(#auroraCenterCobalt)"/>
             <path d="M 198 92 C 212 96, 226 115, 240 135 L 222 148 C 208 132, 200 128, 194 132 Z"
                   fill="url(#auroraFoldCrease)"/>
-
-            <!-- 右上内侧细锥与右翼主体飘带 -->
             <path d="M 298 165 L 300 164 L 482 22 L 452 54 L 302 167 Z"
                   fill="url(#auroraRightTaper)"/>
             <path d="M 316 252 C 324 258, 332 260, 344 252 C 374 232, 414 156, 452 54 L 482 22 C 448 136, 404 228, 362 256 C 346 267, 332 268, 316 252 Z"
                   fill="url(#auroraRightWing)"/>
-
-            <!-- 双向逆流闭合 ∞ 极光丝绸光轨 -->
             <g filter="url(#auroraSilkGlow)">
               <path d="M 48 300 C 78 210, 144 98, 196 102 C 232 106, 294 244, 334 252 C 374 260, 436 146, 476 30 C 442 134, 384 226, 336 246 C 296 262, 232 130, 194 126 C 148 122, 86 226, 48 300 Z"
                     stroke="url(#auroraSilkPrimary)" stroke-width="3.6" stroke-linecap="round"
@@ -541,8 +564,6 @@
                     stroke="url(#auroraSilkCounter)" stroke-width="2.6" stroke-linecap="round"
                     pathLength="200" class="mobius-silk-counter" opacity="0.7"/>
             </g>
-
-            <!-- 中心翡翠-白光胶囊核心 -->
             <g filter="url(#auroraCoreGlow)" class="mobius-core-capsule">
               <rect x="255" y="171.2" width="48" height="12.6" rx="6.3"
                     transform="rotate(-33.3 279 177.5)" fill="#34D399" opacity="0.72"/>
@@ -557,66 +578,80 @@
         <span class="aurora-brand-wordmark text-[19px] sm:text-[21px] leading-none">AURORA</span>
       </div>
 
-      <!-- 右上角：AURORA CORE 状态指示灯、清空对话与流式配置触发按钮 -->
-      <div class="flex items-center gap-2 sm:gap-2.5">
-        <div class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.025] border border-white/[0.06] text-[10.5px] font-medium tracking-wider text-slate-300 select-none">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34D399] animate-pulse"></span>
+      <!-- 右上角：AURORA CORE 状态徽章 + 40x40px 充裕触控热区按钮 -->
+      <div class="flex items-center gap-2">
+        <div class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.025] border border-white/[0.06] text-[10.5px] font-medium tracking-wider text-slate-300 select-none mr-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#34D399] shadow-[0_0_8px_#34D399] animate-pulse"></span>
           <span>AURORA CORE</span>
         </div>
 
-        <button id="clearChatBtn" type="button"
-          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11.5px] text-slate-400 hover:text-cyan-200 bg-white/[0.025] hover:bg-white/[0.06] border border-white/[0.06] transition-all cursor-pointer">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <!-- 40x40px 清空对话按钮 -->
+        <button id="clearChatBtn" type="button" title="清空对话" aria-label="清空对话"
+          class="tactile-press w-10 h-10 rounded-full inline-flex items-center justify-center text-slate-300 hover:text-cyan-200 bg-white/[0.03] hover:bg-white/[0.08] active:bg-cyan-500/15 border border-white/[0.08] cursor-pointer">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
           </svg>
-          <span class="hidden md:inline">清空对话</span>
         </button>
 
-        <button id="openDrawerBtn" type="button"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] text-slate-200 hover:text-cyan-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] backdrop-blur-md transition-all cursor-pointer">
-          <svg class="w-3.5 h-3.5 text-[#00F0FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <!-- >=40x40px 流式与接口配置按钮 -->
+        <button id="openDrawerBtn" type="button" aria-label="流式与接口配置"
+          class="tactile-press h-10 min-w-[40px] px-3 sm:px-3.5 rounded-full inline-flex items-center justify-center gap-1.5 text-xs font-medium text-slate-200 hover:text-cyan-200 bg-white/[0.045] hover:bg-white/[0.09] active:bg-cyan-500/15 border border-white/[0.09] backdrop-blur-md cursor-pointer">
+          <svg class="w-[18px] h-[18px] text-[#00F0FF] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
           </svg>
-          <span>流式与接口配置</span>
+          <span class="hidden sm:inline">流式与接口配置</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- 中央无文本框沉浸式对话画布 -->
-  <main id="chatScrollViewport" class="relative z-10 flex-1 overflow-y-auto editorial-scroll px-4 sm:px-6 pt-6 sm:pt-8 pb-40">
+  <main id="chatScrollViewport" class="relative z-10 flex-1 overflow-y-auto editorial-scroll px-4 sm:px-6 pt-5 sm:pt-8 pb-44">
     <div id="chatStreamList" class="max-w-[740px] mx-auto space-y-9">
-      <!-- AI 消息直接悬浮于 #05070D 深空画布之上，无任何文本框或边框 -->
+      <!-- AI 回复直接悬浮于 #05070D 深空画布之上，无任何文本框或边框 -->
     </div>
   </main>
 
   <!-- 底部悬浮极简指令舱 -->
   <footer class="fixed bottom-0 inset-x-0 z-30 pointer-events-none bg-gradient-to-t from-[#05070D] via-[#05070D]/95 to-transparent pt-6 pb-4 sm:pb-6 px-4 sm:px-6">
     <div class="max-w-[740px] mx-auto pointer-events-auto space-y-2.5">
-      <!-- 3 个精炼快捷指令胶囊 -->
-      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar px-0.5">
-        <button type="button" data-prompt="介绍一下 Aurora 架构"
-          class="quick-prompt shrink-0 px-3 py-1 rounded-full text-[11.5px] text-slate-400 hover:text-cyan-200 bg-white/[0.03] hover:bg-cyan-500/10 border border-white/[0.06] hover:border-cyan-400/35 transition-all cursor-pointer">
-          介绍一下 Aurora 架构
-        </button>
-        <button type="button" data-prompt="演示流式代码生成"
-          class="quick-prompt shrink-0 px-3 py-1 rounded-full text-[11.5px] text-slate-400 hover:text-cyan-200 bg-white/[0.03] hover:bg-cyan-500/10 border border-white/[0.06] hover:border-cyan-400/35 transition-all cursor-pointer">
-          演示流式代码生成
-        </button>
-        <button type="button" data-prompt="写一段科幻极光独白"
-          class="quick-prompt shrink-0 px-3 py-1 rounded-full text-[11.5px] text-slate-400 hover:text-fuchsia-200 bg-white/[0.03] hover:bg-fuchsia-500/10 border border-white/[0.06] hover:border-fuchsia-400/35 transition-all cursor-pointer">
-          写一段科幻极光独白
-        </button>
+
+      <!-- 快捷提示胶囊：桌面端自动居中，移动端左对齐横向滑动并带动态边缘渐隐遮罩（零左侧截断） -->
+      <div class="relative w-full">
+        <div id="chipFadeLeft" class="pointer-events-none opacity-0 transition-opacity duration-200 absolute left-0 top-0 bottom-0 w-7 z-10 bg-gradient-to-r from-[#05070D] to-transparent"></div>
+        <div id="chipScrollTrack" class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto no-scrollbar py-0.5 px-0.5">
+          <button type="button" data-prompt="演示流式代码生成"
+            class="quick-prompt tactile-press shrink-0 px-3.5 py-1.5 rounded-full text-xs text-slate-300 hover:text-cyan-200 bg-white/[0.04] hover:bg-cyan-500/12 active:bg-cyan-500/20 border border-white/[0.08] hover:border-cyan-400/40 cursor-pointer">
+            演示流式代码生成
+          </button>
+          <button type="button" data-prompt="介绍极光编织架构"
+            class="quick-prompt tactile-press shrink-0 px-3.5 py-1.5 rounded-full text-xs text-slate-300 hover:text-cyan-200 bg-white/[0.04] hover:bg-cyan-500/12 active:bg-cyan-500/20 border border-white/[0.08] hover:border-cyan-400/40 cursor-pointer">
+            介绍极光编织架构
+          </button>
+          <button type="button" data-prompt="写一首关于深空与极光的短诗"
+            class="quick-prompt tactile-press shrink-0 px-3.5 py-1.5 rounded-full text-xs text-slate-300 hover:text-fuchsia-200 bg-white/[0.04] hover:bg-fuchsia-500/12 active:bg-fuchsia-500/20 border border-white/[0.08] hover:border-fuchsia-400/40 cursor-pointer">
+            写一首关于深空与极光的短诗
+          </button>
+          <button type="button" data-prompt="对比量子计算与经典计算"
+            class="quick-prompt tactile-press shrink-0 px-3.5 py-1.5 rounded-full text-xs text-slate-300 hover:text-emerald-200 bg-white/[0.04] hover:bg-emerald-500/12 active:bg-emerald-500/20 border border-white/[0.08] hover:border-emerald-400/40 cursor-pointer">
+            对比量子计算与经典计算
+          </button>
+        </div>
+        <div id="chipFadeRight" class="pointer-events-none opacity-0 transition-opacity duration-200 absolute right-0 top-0 bottom-0 w-7 z-10 bg-gradient-to-l from-[#05070D] to-transparent"></div>
       </div>
 
-      <!-- 悬浮暗黑毛玻璃输入框 -->
+      <!-- 悬浮暗黑毛玻璃输入框：移动端精简占位符 '输入指令…' + 桌面端独立 Enter 徽章 -->
       <form id="promptForm" class="floating-input-bar rounded-2xl flex items-end gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5">
         <textarea
           id="promptInput"
           rows="1"
-          placeholder="输入你的指令（Enter 发送，Shift + Enter 换行）..."
+          placeholder="输入指令…"
           class="flex-1 bg-transparent text-[15px] text-slate-100 placeholder-slate-500 py-1.5 resize-none focus:outline-none max-h-32 leading-relaxed editorial-scroll"
         ></textarea>
+
+        <span class="hidden sm:inline-flex items-center px-2 py-1 mb-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-[10px] text-slate-500 select-none shrink-0">
+          Enter
+        </span>
 
         <button
           id="submitActionBtn"
@@ -637,75 +672,82 @@
 
   <!-- 右侧滑出式配置抽屉 -->
   <div id="configDrawerOverlay" class="fixed inset-0 z-50 hidden">
-    <div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-black/60 backdrop-blur-xs opacity-0"></div>
-    <aside id="drawerPanel" class="drawer-panel fixed top-0 right-0 bottom-0 w-full max-w-[376px] bg-[#090D16]/95 backdrop-blur-2xl border-l border-white/[0.08] p-6 flex flex-col justify-between translate-x-full shadow-2xl">
+    <div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-black/65 backdrop-blur-xs opacity-0"></div>
+    <aside id="drawerPanel" class="drawer-panel fixed top-0 right-0 bottom-0 w-full max-w-[384px] bg-[#090D16]/95 backdrop-blur-2xl border-l border-white/[0.08] p-6 flex flex-col justify-between translate-x-full shadow-2xl">
       <div class="space-y-5 overflow-y-auto editorial-scroll pr-1">
         <!-- 抽屉头部 -->
         <div class="flex items-center justify-between pb-3.5 border-b border-white/[0.06]">
           <div>
             <h2 class="text-base font-semibold text-slate-100 tracking-wide">流式与接口配置</h2>
-            <p class="text-xs text-slate-400 mt-0.5">调节吐字节奏、扫描光感、交互轨迹与 SSE 端点</p>
+            <p class="text-xs text-slate-400 mt-0.5">调节性能光效档位、吐字节奏、扫描光感与 SSE 端点</p>
           </div>
-          <button id="closeDrawerBtn" type="button" class="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
+          <button id="closeDrawerBtn" type="button" aria-label="关闭配置抽屉"
+            class="tactile-press w-9 h-9 rounded-full inline-flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 cursor-pointer">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
         </div>
 
-        <!-- 1. 吐字节奏 -->
+        <!-- 1. 性能与光效模式（含低端安卓智能降级档位） -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-xs font-medium text-slate-300">性能与光效模式</label>
+            <span id="perfHintText" class="text-[11px] text-[#00F0FF]">智能自适应 (旗舰全效)</span>
+          </div>
+          <div class="grid grid-cols-4 gap-1.5">
+            <button type="button" data-perf="auto" class="perf-choice tactile-press py-2 px-1.5 rounded-xl text-[11px] border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium cursor-pointer">
+              智能自适应
+            </button>
+            <button type="button" data-perf="full" class="perf-choice tactile-press py-2 px-1.5 rounded-xl text-[11px] border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
+              旗舰全效
+            </button>
+            <button type="button" data-perf="lite" class="perf-choice tactile-press py-2 px-1.5 rounded-xl text-[11px] border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
+              轻量光点
+            </button>
+            <button type="button" data-perf="off" class="perf-choice tactile-press py-2 px-1.5 rounded-xl text-[11px] border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
+              关闭轨迹
+            </button>
+          </div>
+          <p id="perfSubNote" class="text-[11px] text-slate-500 leading-relaxed">
+            低端移动设备或实时帧率波动时自动切换至轻量单光点，兼顾丝滑帧率与极光氛围。
+          </p>
+        </div>
+
+        <!-- 2. 吐字节奏 -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
             <label class="text-xs font-medium text-slate-300">吐字节奏</label>
             <span id="speedHintText" class="text-[11px] text-cyan-400/90">标准极光</span>
           </div>
           <div class="grid grid-cols-3 gap-2">
-            <button type="button" data-speed="poetic" class="speed-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer">
+            <button type="button" data-speed="poetic" class="speed-choice tactile-press py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
               细腻飘逸
             </button>
-            <button type="button" data-speed="standard" class="speed-choice py-2 px-2 rounded-xl text-xs border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium transition-all cursor-pointer">
+            <button type="button" data-speed="standard" class="speed-choice tactile-press py-2 px-2 rounded-xl text-xs border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium cursor-pointer">
               标准极光
             </button>
-            <button type="button" data-speed="swift" class="speed-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer">
+            <button type="button" data-speed="swift" class="speed-choice tactile-press py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
               疾风瞬息
             </button>
           </div>
         </div>
 
-        <!-- 2. 局部扫描光带光感 -->
+        <!-- 3. 局部扫描光带光感 -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
             <label class="text-xs font-medium text-slate-300">局部扫描光带光感</label>
-            <span id="scanHintText" class="text-[11px] text-emerald-400/90">标准</span>
+            <span id="scanHintText" class="text-[11px] text-[#34D399]">标准</span>
           </div>
           <div class="grid grid-cols-3 gap-2">
-            <button type="button" data-scan="subtle" class="scan-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer">
+            <button type="button" data-scan="subtle" class="scan-choice tactile-press py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
               微光
             </button>
-            <button type="button" data-scan="normal" class="scan-choice py-2 px-2 rounded-xl text-xs border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-medium transition-all cursor-pointer">
+            <button type="button" data-scan="normal" class="scan-choice tactile-press py-2 px-2 rounded-xl text-xs border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-medium cursor-pointer">
               标准
             </button>
-            <button type="button" data-scan="vivid" class="scan-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer">
+            <button type="button" data-scan="vivid" class="scan-choice tactile-press py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer">
               绚烂
-            </button>
-          </div>
-        </div>
-
-        <!-- 3. 交互极光轨迹强度 -->
-        <div class="space-y-2">
-          <div class="flex items-center justify-between">
-            <label class="text-xs font-medium text-slate-300">交互极光轨迹强度</label>
-            <span id="trailHintText" class="text-[11px] text-[#00F0FF]">轻盈微光</span>
-          </div>
-          <div class="grid grid-cols-3 gap-2">
-            <button type="button" data-trail="off" class="trail-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer">
-              关闭
-            </button>
-            <button type="button" data-trail="subtle" class="trail-choice py-2 px-2 rounded-xl text-xs border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium transition-all cursor-pointer">
-              轻盈微光
-            </button>
-            <button type="button" data-trail="vivid" class="trail-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer">
-              绚丽流光
             </button>
           </div>
         </div>
@@ -748,11 +790,11 @@
       <!-- 抽屉底部操作按钮 -->
       <div class="pt-4 border-t border-white/[0.06] flex items-center gap-2.5">
         <button id="testScanEffectBtn" type="button"
-          class="flex-1 py-2.5 px-3 rounded-xl text-xs text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/18 border border-cyan-400/25 transition-all cursor-pointer">
+          class="tactile-press flex-1 py-2.5 px-3 rounded-xl text-xs text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/18 border border-cyan-400/25 cursor-pointer">
           预览光带流效
         </button>
         <button id="saveConfigBtn" type="button"
-          class="flex-1 btn-aurora-send py-2.5 px-3 rounded-xl text-xs font-medium text-white cursor-pointer">
+          class="tactile-press flex-1 btn-aurora-send py-2.5 px-3 rounded-xl text-xs font-medium text-white cursor-pointer">
           保存并应用
         </button>
       </div>
@@ -760,7 +802,7 @@
   </div>
 
   <!-- 非阻塞轻量化提示 Toast -->
-  <div id="toastBanner" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 -translate-y-2 transition-all duration-300 px-4 py-1.5 rounded-full text-xs text-cyan-200 bg-[#0B101D]/90 border border-cyan-400/30 backdrop-blur-md shadow-xl">
+  <div id="toastBanner" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 -translate-y-2 transition-all duration-300 px-4 py-1.5 rounded-full text-xs text-cyan-200 bg-[#0B101D]/92 border border-cyan-400/30 backdrop-blur-md shadow-xl">
     已复制到剪贴板
   </div>
 
@@ -769,27 +811,21 @@
       'use strict';
 
       /* =========================================================================
-         1. 全局状态与预设配置
+         1. 全局状态、触觉反馈工具与预设配置
          ========================================================================= */
       const DEFAULT_SYSTEM_PROMPT = '你是 Aurora-Weave（极光编织），由创始人江城依旧主导开发的 AURORA 极光智能核心。';
       const INITIAL_GREETING = '系统已上线，等待您的指令，江城依旧。';
 
       const SPEED_CONFIG = {
-        poetic:   { label: '细腻飘逸', delay: 38, jitter: 16, minChunk: 1, maxChunk: 2 },
-        standard: { label: '标准极光', delay: 22, jitter: 10, minChunk: 1, maxChunk: 3 },
-        swift:    { label: '疾风瞬息', delay: 9,  jitter: 5,  minChunk: 2, maxChunk: 5 }
+        poetic:   { label: '细腻飘逸', intervalMs: 36, jitterMs: 14, charsPerFrame: 1 },
+        standard: { label: '标准极光', intervalMs: 20, jitterMs: 8,  charsPerFrame: 1 },
+        swift:    { label: '疾风瞬息', intervalMs: 10, jitterMs: 4,  charsPerFrame: 2 }
       };
 
       const SCAN_CONFIG = {
         subtle: { label: '微光', opacity: '0.45' },
         normal: { label: '标准', opacity: '1' },
         vivid:  { label: '绚烂', opacity: '1.45' }
-      };
-
-      const TRAIL_CONFIG = {
-        off:    { label: '关闭',     maxAge: 0,   minW: 0,   maxW: 0,   alpha: 0,    blur: 0  },
-        subtle: { label: '轻盈微光', maxAge: 560, minW: 0.5, maxW: 3.0, alpha: 0.8,  blur: 11 },
-        vivid:  { label: '绚丽流光', maxAge: 700, minW: 0.7, maxW: 3.8, alpha: 0.96, blur: 18 }
       };
 
       const state = {
@@ -799,7 +835,7 @@
         userScrolledUp: false,
         speedPreset: 'standard',
         scanPreset: 'normal',
-        trailPreset: 'subtle',
+        perfMode: 'auto', // 'auto' | 'full' | 'lite' | 'off'
         api: {
           baseUrl: '',
           apiKey: '',
@@ -820,6 +856,9 @@
       const iconStop = document.getElementById('iconStop');
       const clearChatBtn = document.getElementById('clearChatBtn');
       const toastBanner = document.getElementById('toastBanner');
+      const chipScrollTrack = document.getElementById('chipScrollTrack');
+      const chipFadeLeft = document.getElementById('chipFadeLeft');
+      const chipFadeRight = document.getElementById('chipFadeRight');
 
       // 配置抽屉 DOM
       const configDrawerOverlay = document.getElementById('configDrawerOverlay');
@@ -829,6 +868,14 @@
       const closeDrawerBtn = document.getElementById('closeDrawerBtn');
       const saveConfigBtn = document.getElementById('saveConfigBtn');
       const testScanEffectBtn = document.getElementById('testScanEffectBtn');
+
+      function triggerHaptic(ms = 10) {
+        try {
+          if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+            navigator.vibrate(ms);
+          }
+        } catch (_) {}
+      }
 
       function showToast(message) {
         toastBanner.textContent = message;
@@ -842,12 +889,157 @@
       }
 
       /* =========================================================================
-         2. 鼠标滑动、触屏与页面滚动实时渐变极光轨迹引擎 (AuroraTrajectoryEngine)
+         2. 设备算力与实时帧率探测器 (DeviceCapabilityDetector)
+         ========================================================================= */
+      const DeviceCapabilityDetector = (function () {
+        let hardwareTier = 'full'; // 'full' | 'lite'
+        let runtimeDowngraded = false;
+        let slowFrameStreak = 0;
+        let lastFrameTime = 0;
+
+        function detectHardware() {
+          const mem = navigator.deviceMemory || 8;
+          const cores = navigator.hardwareConcurrency || 8;
+          const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const isAndroid = /Android/i.test(navigator.userAgent || '');
+
+          if (prefersReduced || mem <= 4 || cores <= 4 || (isAndroid && mem <= 6 && cores <= 6)) {
+            hardwareTier = 'lite';
+          } else {
+            hardwareTier = 'full';
+          }
+          updatePerfStatusLabel();
+        }
+
+        function recordFrame(now) {
+          if (lastFrameTime > 0 && state.perfMode === 'auto' && getEffectiveTier() === 'full') {
+            const delta = now - lastFrameTime;
+            // 若连续出现帧间隔 > 30ms（低于 ~33 FPS），自动平滑降级至轻量光点模式
+            if (delta > 30 && delta < 250) {
+              slowFrameStreak++;
+              if (slowFrameStreak >= 10) {
+                runtimeDowngraded = true;
+                updatePerfStatusLabel();
+              }
+            } else {
+              slowFrameStreak = Math.max(0, slowFrameStreak - 1);
+            }
+          }
+          lastFrameTime = now;
+        }
+
+        function resetFrameClock() {
+          lastFrameTime = 0;
+          slowFrameStreak = 0;
+        }
+
+        function getEffectiveTier() {
+          if (state.perfMode === 'off') return 'off';
+          if (state.perfMode === 'lite') return 'lite';
+          if (state.perfMode === 'full') return 'full';
+          return runtimeDowngraded ? 'lite' : hardwareTier;
+        }
+
+        function updatePerfStatusLabel() {
+          const hintEl = document.getElementById('perfHintText');
+          if (!hintEl) return;
+          const tier = getEffectiveTier();
+          const tierName = tier === 'full' ? '旗舰全效' : tier === 'lite' ? '轻量光点' : '已关闭';
+          if (state.perfMode === 'auto') {
+            hintEl.textContent = `智能自适应 (${tierName})`;
+          } else {
+            hintEl.textContent = tierName;
+          }
+        }
+
+        return {
+          detectHardware,
+          recordFrame,
+          resetFrameClock,
+          getEffectiveTier,
+          updatePerfStatusLabel
+        };
+      })();
+
+      /* =========================================================================
+         3. 阻尼平滑滚动引擎 (SmoothScroller - 柔和跟流，上滑回看自动礼让)
+         ========================================================================= */
+      const SmoothScroller = (function () {
+        let rafId = null;
+        let currentScroll = 0;
+        let isAnimating = false;
+
+        function step() {
+          if (state.userScrolledUp) {
+            isAnimating = false;
+            rafId = null;
+            return;
+          }
+
+          const target = Math.max(0, chatScrollViewport.scrollHeight - chatScrollViewport.clientHeight);
+          const diff = target - currentScroll;
+
+          if (Math.abs(diff) < 0.8) {
+            chatScrollViewport.scrollTop = target;
+            currentScroll = target;
+            isAnimating = false;
+            rafId = null;
+            return;
+          }
+
+          // 指数阻尼插值，避免内容突然上推导致旧文本生硬跳出
+          currentScroll += diff * 0.22;
+          chatScrollViewport.scrollTop = currentScroll;
+          rafId = requestAnimationFrame(step);
+        }
+
+        function nudge(force) {
+          if (force) {
+            state.userScrolledUp = false;
+          }
+          if (state.userScrolledUp) return;
+
+          if (!isAnimating) {
+            currentScroll = chatScrollViewport.scrollTop;
+            isAnimating = true;
+            rafId = requestAnimationFrame(step);
+          }
+        }
+
+        function snapToTop() {
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+          isAnimating = false;
+          currentScroll = 0;
+          chatScrollViewport.scrollTop = 0;
+        }
+
+        return { nudge, snapToTop };
+      })();
+
+      // 监听用户主动上滑回看历史消息，避免抢夺滚动条
+      let lastViewportScrollTop = 0;
+      chatScrollViewport.addEventListener('scroll', () => {
+        const st = chatScrollViewport.scrollTop;
+        const distFromBottom = chatScrollViewport.scrollHeight - st - chatScrollViewport.clientHeight;
+        if (st < lastViewportScrollTop - 6 && distFromBottom > 64) {
+          state.userScrolledUp = true;
+        } else if (distFromBottom <= 44) {
+          state.userScrolledUp = false;
+        }
+        lastViewportScrollTop = st;
+      }, { passive: true });
+
+      /* =========================================================================
+         4. 交互极光轨迹引擎 (AuroraTrajectoryEngine - 支持旗舰全效与轻量单光点降级)
          ========================================================================= */
       const AuroraTrajectoryEngine = (function () {
         const canvas = document.getElementById('auroraTrailCanvas');
         const ctx = canvas.getContext('2d');
         const points = [];
+        let liteOrb = null; // 轻量模式仅保留单个极光呼吸光点
         let rafId = null;
         let dpr = 1;
         let width = 0;
@@ -858,7 +1050,9 @@
         let wavePhase = 0;
 
         function resize() {
-          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const tier = DeviceCapabilityDetector.getEffectiveTier();
+          const maxDpr = tier === 'lite' ? 1.25 : 2;
+          dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
           width = window.innerWidth;
           height = window.innerHeight;
           canvas.width = Math.floor(width * dpr);
@@ -868,12 +1062,14 @@
 
         function startLoop() {
           if (rafId === null) {
+            DeviceCapabilityDetector.resetFrameClock();
             rafId = requestAnimationFrame(render);
           }
         }
 
         function clear() {
           points.length = 0;
+          liteOrb = null;
           ctx.clearRect(0, 0, width, height);
           if (rafId !== null) {
             cancelAnimationFrame(rafId);
@@ -882,8 +1078,14 @@
         }
 
         function pushPoint(x, y, now) {
-          const cfg = TRAIL_CONFIG[state.trailPreset];
-          if (!cfg || cfg.maxAge <= 0) return;
+          const tier = DeviceCapabilityDetector.getEffectiveTier();
+          if (tier === 'off') return;
+
+          if (tier === 'lite') {
+            liteOrb = { x, y, time: now };
+            startLoop();
+            return;
+          }
 
           if (points.length > 0) {
             const prev = points[points.length - 1];
@@ -891,10 +1093,9 @@
             const dy = y - prev.y;
             const dist = Math.hypot(dx, dy);
 
-            // 过近采样去重，高速移动时线性补点保证丝绸弧线顺滑
             if (dist < 2.2) return;
             if (dist > 28) {
-              const steps = Math.min(Math.floor(dist / 14), 6);
+              const steps = Math.min(Math.floor(dist / 14), 5);
               for (let s = 1; s < steps; s++) {
                 const t = s / steps;
                 points.push({
@@ -907,27 +1108,58 @@
           }
 
           points.push({ x, y, time: now });
-          if (points.length > 140) {
-            points.splice(0, points.length - 140);
+          if (points.length > 120) {
+            points.splice(0, points.length - 120);
           }
           startLoop();
         }
 
         function render(now) {
-          const cfg = TRAIL_CONFIG[state.trailPreset];
-          if (!cfg || cfg.maxAge <= 0) {
+          DeviceCapabilityDetector.recordFrame(now);
+          const tier = DeviceCapabilityDetector.getEffectiveTier();
+
+          if (tier === 'off') {
             clear();
             return;
           }
 
           ctx.clearRect(0, 0, width, height);
 
-          // 剔除过期轨迹节点
-          while (points.length > 0 && now - points[0].time > cfg.maxAge) {
+          // 轻量单光点模式（无多段样条、无 shadowBlur，低端安卓机满帧运行）
+          if (tier === 'lite') {
+            points.length = 0;
+            if (!liteOrb) {
+              rafId = null;
+              return;
+            }
+            const age = now - liteOrb.time;
+            const maxLiteAge = 360;
+            if (age > maxLiteAge) {
+              liteOrb = null;
+              rafId = null;
+              return;
+            }
+            const life = 1 - age / maxLiteAge;
+            const radius = 5 + life * 4;
+            const grad = ctx.createRadialGradient(liteOrb.x, liteOrb.y, 0, liteOrb.x, liteOrb.y, radius);
+            grad.addColorStop(0, `rgba(255, 255, 255, ${(life * 0.88).toFixed(3)})`);
+            grad.addColorStop(0.45, `rgba(52, 211, 153, ${(life * 0.55).toFixed(3)})`);
+            grad.addColorStop(1, 'rgba(0, 240, 255, 0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(liteOrb.x, liteOrb.y, radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            rafId = requestAnimationFrame(render);
+            return;
+          }
+
+          // 旗舰全效丝绸样条轨迹模式
+          const maxAge = 540;
+          while (points.length > 0 && now - points[0].time > maxAge) {
             points.shift();
           }
 
-          // 轨迹完全消散后自动休眠 rAF，保证零后台功耗
           if (points.length === 0) {
             rafId = null;
             return;
@@ -937,45 +1169,43 @@
             ctx.save();
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
-            ctx.shadowBlur = cfg.blur;
-            ctx.shadowColor = 'rgba(0, 240, 255, 0.55)';
+            ctx.shadowBlur = 11;
+            ctx.shadowColor = 'rgba(0, 240, 255, 0.5)';
 
             for (let i = 1; i < points.length; i++) {
               const p0 = points[i - 1];
               const p1 = points[i];
               const age = now - p1.time;
-              const life = Math.max(0, 1 - age / cfg.maxAge);
+              const life = Math.max(0, 1 - age / maxAge);
               const posRatio = i / (points.length - 1);
               const envelope = life * posRatio;
 
-              // 二次样条中点平滑
               const prevMidX = i > 1 ? (points[i - 2].x + p0.x) * 0.5 : p0.x;
               const prevMidY = i > 1 ? (points[i - 2].y + p0.y) * 0.5 : p0.y;
               const currMidX = (p0.x + p1.x) * 0.5;
               const currMidY = (p0.y + p1.y) * 0.5;
 
               const grad = ctx.createLinearGradient(prevMidX, prevMidY, currMidX, currMidY);
-              const alpha = (envelope * cfg.alpha).toFixed(3);
+              const alpha = (envelope * 0.82).toFixed(3);
               grad.addColorStop(0, `rgba(0, 240, 255, ${(alpha * 0.85).toFixed(3)})`);
               grad.addColorStop(0.35, `rgba(59, 130, 246, ${alpha})`);
               grad.addColorStop(0.68, `rgba(52, 211, 153, ${alpha})`);
-              grad.addColorStop(1, `rgba(236, 72, 153, ${alpha})`);
+              grad.addColorStop(1, `rgba(232, 121, 249, ${alpha})`);
 
               ctx.beginPath();
               ctx.moveTo(prevMidX, prevMidY);
               ctx.quadraticCurveTo(p0.x, p0.y, currMidX, currMidY);
               ctx.strokeStyle = grad;
-              ctx.lineWidth = cfg.minW + (cfg.maxW - cfg.minW) * envelope;
+              ctx.lineWidth = 0.5 + 2.5 * envelope;
               ctx.stroke();
             }
 
-            // 轨迹前端微光能量粒子
             const head = points[points.length - 1];
-            const headLife = Math.max(0, 1 - (now - head.time) / cfg.maxAge);
+            const headLife = Math.max(0, 1 - (now - head.time) / maxAge);
             if (headLife > 0.08) {
               const tipGrad = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 7);
-              tipGrad.addColorStop(0, `rgba(255, 255, 255, ${(headLife * 0.9).toFixed(3)})`);
-              tipGrad.addColorStop(0.45, `rgba(110, 231, 183, ${(headLife * 0.65).toFixed(3)})`);
+              tipGrad.addColorStop(0, `rgba(255, 255, 255, ${(headLife * 0.92).toFixed(3)})`);
+              tipGrad.addColorStop(0.45, `rgba(52, 211, 153, ${(headLife * 0.65).toFixed(3)})`);
               tipGrad.addColorStop(1, 'rgba(0, 240, 255, 0)');
               ctx.fillStyle = tipGrad;
               ctx.beginPath();
@@ -1031,11 +1261,11 @@
           }
         }
 
-        return { bindEvents, clear };
+        return { bindEvents, resize, clear };
       })();
 
       /* =========================================================================
-         3. 行内莫比乌斯极光徽标工厂（26px x 17px，直接引用全局 <defs>）
+         5. 行内莫比乌斯极光徽标工厂（26x17px 正立徽标，共享全局 <defs>）
          ========================================================================= */
       function createInlineMobiusEmblemHTML(isStreaming) {
         return `
@@ -1061,7 +1291,7 @@
               </g>
               <g filter="url(#auroraCoreGlow)" class="mobius-core-capsule">
                 <rect x="256" y="171.8" width="46" height="11.4" rx="5.7"
-                      transform="rotate(-33.3 279 177.5)" fill="#6EE7B7" opacity="0.92"/>
+                      transform="rotate(-33.3 279 177.5)" fill="#34D399" opacity="0.92"/>
                 <rect x="258" y="173.25" width="42" height="8.5" rx="4.25"
                       transform="rotate(-33.3 279 177.5)" fill="#FFFFFF"/>
               </g>
@@ -1071,9 +1301,10 @@
       }
 
       /* =========================================================================
-         4. 增量 DOM 字符弧线显影状态机（不覆盖 innerHTML，彻底杜绝闪烁与重排）
+         6. 原子单帧同步字符流与增量 Markdown 构建器
          ========================================================================= */
       function copyCodeById(codeId, btn) {
+        triggerHaptic(12);
         const preEl = document.getElementById(codeId);
         if (!preEl) return;
         const text = preEl.innerText;
@@ -1086,10 +1317,10 @@
         try {
           document.execCommand('copy');
           btn.textContent = '已复制 ✓';
-          btn.classList.add('text-emerald-400');
+          btn.classList.add('text-[#34D399]');
           setTimeout(() => {
             btn.textContent = '复制代码';
-            btn.classList.remove('text-emerald-400');
+            btn.classList.remove('text-[#34D399]');
           }, 1800);
           showToast('代码已复制到剪贴板');
         } catch (_) {
@@ -1098,7 +1329,7 @@
         document.body.removeChild(ta);
       }
 
-      function createIncrementalAuroraWriter(entryNodes, animateChars = true) {
+      function createAtomicAuroraWriter(entryNodes, animateChars = true) {
         const root = entryNodes.proseRoot;
         const cursor = entryNodes.cursorEl;
 
@@ -1112,11 +1343,15 @@
         let currentLineEl = null;
         let activeInlineEl = null;
 
-        // Fenced code block state
         let codeLangEl = null;
         let codeBodyEl = null;
         let readingCodeLang = false;
         let codeLineBuffer = '';
+
+        // 单帧原子队列：确保每个新渲染字符与 .aurora-cursor 在同一 rAF 帧内同步定位
+        const charQueue = [];
+        let drainRafId = null;
+        let onDrainComplete = null;
 
         function ensureLine() {
           if (!currentLineEl) {
@@ -1125,6 +1360,15 @@
             root.appendChild(currentLineEl);
             activeInlineEl = currentLineEl;
           }
+        }
+
+        function syncCursorAfterNode(parentNode) {
+          if (!cursor) return;
+          parentNode.appendChild(cursor);
+          cursor.classList.remove('is-ticking');
+          // 触发轻量化单帧重绘脉冲，使光标紧随新字符同步跃动
+          void cursor.offsetWidth;
+          cursor.classList.add('is-ticking');
         }
 
         function appendCharToTarget(target, ch) {
@@ -1136,9 +1380,7 @@
             span.textContent = ch;
             target.appendChild(span);
           }
-          if (cursor && cursor.parentNode) {
-            target.appendChild(cursor);
-          }
+          syncCursorAfterNode(target);
         }
 
         function createCodeBlockCard() {
@@ -1155,7 +1397,7 @@
 
           const copyBtn = document.createElement('button');
           copyBtn.type = 'button';
-          copyBtn.className = 'px-2 py-0.5 rounded hover:bg-white/10 text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer';
+          copyBtn.className = 'tactile-press px-2.5 py-1 rounded hover:bg-white/10 text-slate-300 hover:text-cyan-300 cursor-pointer';
           copyBtn.textContent = '复制代码';
           copyBtn.addEventListener('click', () => copyCodeById(codeId, copyBtn));
 
@@ -1196,7 +1438,6 @@
         function processProseChar(ch) {
           ensureLine();
 
-          // 处理前一个单独的 '*'（判断是否为 '**' 加粗标记）
           if (pendingAsterisk) {
             pendingAsterisk = false;
             if (ch === '*') {
@@ -1248,7 +1489,7 @@
           appendCharToTarget(activeInlineEl, ch);
         }
 
-        function feedChar(ch) {
+        function commitSingleChar(ch) {
           accumulated += ch;
 
           if (mode === 'CODE_BLOCK') {
@@ -1266,7 +1507,6 @@
 
             if (ch === '\n') {
               if (codeLineBuffer.trim() === '```') {
-                // 关闭代码块，回到普通段落模式
                 mode = 'PROSE';
                 codeLineBuffer = '';
                 codeLangEl = null;
@@ -1284,7 +1524,7 @@
                 codeLineBuffer = '';
               }
               codeBodyEl.appendChild(document.createTextNode('\n'));
-              if (cursor) codeBodyEl.appendChild(cursor);
+              syncCursorAfterNode(codeBodyEl);
               return;
             }
 
@@ -1298,7 +1538,6 @@
             return;
           }
 
-          // PROSE 模式下的换行处理
           if (ch === '\n') {
             if (atLineStart && lineStartBuffer) {
               flushLineStartBuffer();
@@ -1317,7 +1556,6 @@
             return;
           }
 
-          // 行首块级语法识别（``` / # / ## / ### / > / - ）
           if (atLineStart) {
             lineStartBuffer += ch;
 
@@ -1331,7 +1569,7 @@
               return;
             }
 
-            if (lineStartBuffer === '- ') {
+            if (lineStartBuffer === '- ' || lineStartBuffer === '* ') {
               atLineStart = false;
               lineStartBuffer = '';
               currentLineEl = document.createElement('div');
@@ -1349,11 +1587,12 @@
               return;
             }
 
+            // 提亮斜体引用区块：15px + #CBD5E1 高对比银白字色，户外或低亮度清晰易读
             if (lineStartBuffer === '> ') {
               atLineStart = false;
               lineStartBuffer = '';
-              currentLineEl = document.createElement('div');
-              currentLineEl.className = 'border-l-2 border-cyan-400/50 pl-3 my-2 text-slate-300 italic';
+              currentLineEl = document.createElement('blockquote');
+              currentLineEl.className = 'border-l-2 border-[#00F0FF]/65 pl-3.5 my-2.5 text-[15px] leading-[1.75] text-[#CBD5E1] italic';
               root.appendChild(currentLineEl);
               activeInlineEl = currentLineEl;
               if (cursor) activeInlineEl.appendChild(cursor);
@@ -1379,6 +1618,7 @@
             const couldBeBlockPrefix =
               '```'.startsWith(lineStartBuffer) ||
               '- '.startsWith(lineStartBuffer) ||
+              '* '.startsWith(lineStartBuffer) ||
               '> '.startsWith(lineStartBuffer) ||
               /^#{1,3}$/.test(lineStartBuffer);
 
@@ -1391,13 +1631,58 @@
           processProseChar(ch);
         }
 
-        function appendChunk(chunk) {
-          for (const ch of chunk) {
-            feedChar(ch);
+        function drainFrame() {
+          drainRafId = null;
+          if (charQueue.length === 0) {
+            if (onDrainComplete) {
+              const cb = onDrainComplete;
+              onDrainComplete = null;
+              cb();
+            }
+            return;
+          }
+
+          // 若积压较多（如网络突发到达），每帧最多释放 3 个字符保持光点与文字严格贴合
+          const batchCount = charQueue.length > 18 ? 3 : charQueue.length > 6 ? 2 : 1;
+          for (let i = 0; i < batchCount && charQueue.length > 0; i++) {
+            commitSingleChar(charQueue.shift());
+          }
+
+          SmoothScroller.nudge(false);
+
+          if (charQueue.length > 0) {
+            drainRafId = requestAnimationFrame(drainFrame);
+          } else if (onDrainComplete) {
+            const cb = onDrainComplete;
+            onDrainComplete = null;
+            cb();
           }
         }
 
-        function finalize() {
+        function appendChunk(chunk) {
+          if (!animateChars) {
+            for (const ch of chunk) {
+              commitSingleChar(ch);
+            }
+            return;
+          }
+          for (const ch of chunk) {
+            charQueue.push(ch);
+          }
+          if (drainRafId === null) {
+            drainRafId = requestAnimationFrame(drainFrame);
+          }
+        }
+
+        function finalize(immediate = false) {
+          if (drainRafId !== null && immediate) {
+            cancelAnimationFrame(drainRafId);
+            drainRafId = null;
+          }
+          while (charQueue.length > 0) {
+            commitSingleChar(charQueue.shift());
+          }
+
           if (mode === 'CODE_BLOCK' && codeLineBuffer && codeLineBuffer.trim() !== '```' && codeBodyEl) {
             for (const c of codeLineBuffer) {
               appendCharToTarget(codeBodyEl, c);
@@ -1421,14 +1706,23 @@
           if (entryNodes.block) {
             entryNodes.block.classList.remove('is-streaming');
           }
+          SmoothScroller.nudge(false);
           return accumulated;
         }
 
-        return { appendChunk, finalize };
+        function whenDrained(cb) {
+          if (charQueue.length === 0 && drainRafId === null) {
+            cb();
+          } else {
+            onDrainComplete = cb;
+          }
+        }
+
+        return { appendChunk, finalize, whenDrained };
       }
 
       /* =========================================================================
-         5. 无文本框对话条目创建与流式调度
+         7. 对话条目创建与流式调度
          ========================================================================= */
       function escapeHtml(str) {
         return str
@@ -1437,17 +1731,6 @@
           .replace(/>/g, '&gt;')
           .replace(/"/g, '&quot;');
       }
-
-      function scrollToBottom(force) {
-        if (force || !state.userScrolledUp) {
-          chatScrollViewport.scrollTop = chatScrollViewport.scrollHeight;
-        }
-      }
-
-      chatScrollViewport.addEventListener('scroll', () => {
-        const dist = chatScrollViewport.scrollHeight - chatScrollViewport.scrollTop - chatScrollViewport.clientHeight;
-        state.userScrolledUp = dist > 72;
-      }, { passive: true });
 
       function createUserEntry(text) {
         const row = document.createElement('div');
@@ -1458,26 +1741,26 @@
           </div>
         `;
         chatStreamList.appendChild(row);
-        scrollToBottom(true);
+        SmoothScroller.nudge(true);
       }
 
-      function createAuroraEntry(isStreaming) {
+      function createAuroraEntry(isStreaming, animateWelcome = false) {
         const block = document.createElement('div');
-        block.className = `aurora-dialogue-block ${isStreaming ? 'is-streaming' : ''} relative w-full`;
+        block.className = `aurora-dialogue-block ${isStreaming ? 'is-streaming' : ''} ${animateWelcome ? 'chat-welcome-enter' : ''} relative w-full`;
 
         block.innerHTML = `
-          <!-- 局部细长极光扫描光带：严格裁剪在当前 AI 对话块顶部 26px 宽度内 -->
+          <!-- 局部 1.5px 细长极光扫描光带：严格裁剪在当前 AI 对话块顶部 24px 条带内 -->
           <div class="aurora-scan-zone">
             <div class="aurora-scan-beam"></div>
             <div class="aurora-scan-sheen"></div>
           </div>
 
-          <!-- 无文本框深空悬浮内容区 -->
+          <!-- 无文本框深空悬浮排版 -->
           <div class="flex items-start gap-3.5 sm:gap-4 w-full pt-2">
             ${createInlineMobiusEmblemHTML(isStreaming)}
             <div class="flex-1 min-w-0 pt-0.5">
               <div class="flex items-center gap-2 mb-1.5 select-none">
-                <span class="text-xs font-medium tracking-wider bg-gradient-to-r from-[#00F0FF] via-[#6EE7B7] to-[#EC4899] bg-clip-text text-transparent">
+                <span class="text-xs font-medium tracking-wider bg-gradient-to-r from-[#00F0FF] via-[#34D399] to-[#E879F9] bg-clip-text text-transparent">
                   Aurora-Weave
                 </span>
               </div>
@@ -1492,11 +1775,11 @@
         let cursorEl = null;
         if (isStreaming) {
           cursorEl = document.createElement('span');
-          cursorEl.className = 'aurora-cursor-dot';
+          cursorEl.className = 'aurora-cursor';
           proseRoot.appendChild(cursorEl);
         }
 
-        scrollToBottom(true);
+        SmoothScroller.nudge(true);
 
         return {
           block,
@@ -1513,12 +1796,12 @@
           iconSend.classList.add('hidden');
           iconStop.classList.remove('hidden');
           submitActionBtn.classList.remove('btn-aurora-send');
-          submitActionBtn.classList.add('bg-rose-500/20', 'border', 'border-rose-400/35', 'text-rose-200', 'hover:bg-rose-500/30');
+          submitActionBtn.classList.add('bg-rose-500/20', 'border', 'border-rose-400/35', 'text-rose-200', 'hover:bg-rose-500/30', 'active:scale-95');
         } else {
           btnLabel.textContent = '发送';
           iconStop.classList.add('hidden');
           iconSend.classList.remove('hidden');
-          submitActionBtn.classList.remove('bg-rose-500/20', 'border', 'border-rose-400/35', 'text-rose-200', 'hover:bg-rose-500/30');
+          submitActionBtn.classList.remove('bg-rose-500/20', 'border', 'border-rose-400/35', 'text-rose-200', 'hover:bg-rose-500/30', 'active:scale-95');
           submitActionBtn.classList.add('btn-aurora-send');
         }
       }
@@ -1537,7 +1820,7 @@
           state.abortController = null;
         }
         if (activeFinalizeCallback) {
-          activeFinalizeCallback();
+          activeFinalizeCallback(true);
           activeFinalizeCallback = null;
         }
         updateActionButtonState(false);
@@ -1547,10 +1830,10 @@
         updateActionButtonState(true);
         state.userScrolledUp = false;
 
-        const writer = createIncrementalAuroraWriter(entryNodes, true);
+        const writer = createAtomicAuroraWriter(entryNodes, true);
 
-        activeFinalizeCallback = () => {
-          const finalStr = writer.finalize();
+        activeFinalizeCallback = (immediate = false) => {
+          const finalStr = writer.finalize(immediate);
           if (finalStr && recordHistory) {
             state.history.push({ role: 'assistant', content: finalStr });
           }
@@ -1563,33 +1846,33 @@
           if (!state.isStreaming) return;
 
           const cfg = SPEED_CONFIG[state.speedPreset] || SPEED_CONFIG.standard;
-          const stepSize = Math.floor(Math.random() * (cfg.maxChunk - cfg.minChunk + 1)) + cfg.minChunk;
-          const nextIdx = Math.min(idx + stepSize, len);
+          const nextIdx = Math.min(idx + cfg.charsPerFrame, len);
           const chunk = fullText.slice(idx, nextIdx);
           idx = nextIdx;
 
           writer.appendChunk(chunk);
-          scrollToBottom(false);
 
           if (idx >= len) {
-            state.streamTimer = setTimeout(() => {
-              if (activeFinalizeCallback) {
-                activeFinalizeCallback();
-                activeFinalizeCallback = null;
-              }
-              updateActionButtonState(false);
-            }, 240);
+            writer.whenDrained(() => {
+              state.streamTimer = setTimeout(() => {
+                if (activeFinalizeCallback) {
+                  activeFinalizeCallback(false);
+                  activeFinalizeCallback = null;
+                }
+                updateActionButtonState(false);
+              }, 160);
+            });
             return;
           }
 
-          let wait = cfg.delay + (Math.random() * cfg.jitter - cfg.jitter / 2);
+          let wait = cfg.intervalMs + (Math.random() * cfg.jitterMs - cfg.jitterMs / 2);
           if (/[，。！？；：、\n]/.test(chunk)) {
-            wait += cfg.delay * 2.1;
+            wait += cfg.intervalMs * 2.2;
           }
-          state.streamTimer = setTimeout(tick, Math.max(8, wait));
+          state.streamTimer = setTimeout(tick, Math.max(10, wait));
         }
 
-        state.streamTimer = setTimeout(tick, 120);
+        state.streamTimer = setTimeout(tick, 90);
       }
 
       async function runLiveSSEStream(userPrompt, entryNodes) {
@@ -1597,10 +1880,10 @@
         state.userScrolledUp = false;
         state.abortController = new AbortController();
 
-        const writer = createIncrementalAuroraWriter(entryNodes, true);
+        const writer = createAtomicAuroraWriter(entryNodes, true);
 
-        activeFinalizeCallback = () => {
-          const finalStr = writer.finalize();
+        activeFinalizeCallback = (immediate = false) => {
+          const finalStr = writer.finalize(immediate);
           if (finalStr) {
             state.history.push({ role: 'assistant', content: finalStr });
           }
@@ -1661,21 +1944,22 @@
                   : '';
                 if (delta) {
                   writer.appendChunk(delta);
-                  scrollToBottom(false);
                 }
               } catch (_) {}
             }
           }
 
-          if (activeFinalizeCallback) {
-            activeFinalizeCallback();
-            activeFinalizeCallback = null;
-          }
-          updateActionButtonState(false);
+          writer.whenDrained(() => {
+            if (activeFinalizeCallback) {
+              activeFinalizeCallback(false);
+              activeFinalizeCallback = null;
+            }
+            updateActionButtonState(false);
+          });
         } catch (err) {
           if (err && err.name === 'AbortError') {
             if (activeFinalizeCallback) {
-              activeFinalizeCallback();
+              activeFinalizeCallback(true);
               activeFinalizeCallback = null;
             }
             updateActionButtonState(false);
@@ -1690,21 +1974,13 @@
       }
 
       /* =========================================================================
-         6. 上下文感知智能演示回复库
+         8. 4 项精选指令演示回复库
          ========================================================================= */
       function buildSignatureResponse(prompt) {
         const q = prompt.trim();
 
-        if (q.includes('架构') || q.includes('介绍') || q.toLowerCase().includes('aurora')) {
-          return `您好，江城依旧。我是 **Aurora-Weave（极光编织）**，运行于 **AURORA** 黑曜石极简交互架构之上。系统围绕高密度语义推演与零阻尼视觉体验构建：
-
-- **增量 DOM 字符弧线引擎**：摒弃重绘闪烁，每个抵达的 Token 均以独立原子节点沿着微弧轨迹滑入，从青蓝与品红极光高光平滑定格为纯净亮白正文。
-- **局部极光扫描光带**：生成期间仅在当前对话块顶部激活 \`1.5px\` 细长极光扫描光轨，严格裁剪于阅读区域内，保持全屏深空通透感。
-- **原生 SSE 流式扩展**：在右上角 **「流式与接口配置」** 中填入任意 OpenAI 兼容端点，即可即时切换至真实大模型流式推演。`;
-        }
-
         if (q.includes('代码') || q.includes('流式') || q.includes('Python') || q.includes('python')) {
-          return `好的，江城依旧。以下为您演示一个具备背压控制与自然标点呼吸停顿的 **Python 异步极光流式生成器**：
+          return `好的，江城依旧。以下为您演示一个具备语义停顿与异步背压控制的 **Python 极光流式生成器**：
 
 \`\`\`python
 import asyncio
@@ -1714,16 +1990,16 @@ async def aurora_token_stream(
     tokens: Iterable[str],
     base_delay: float = 0.018
 ) -> AsyncGenerator[str, None]:
-    \"\"\"Aurora-Weave 语义节拍自适应流式生成器\"\"\"
+    \"\"\"Aurora-Weave 原子级同步流式生成器\"\"\"
     pause_marks = {"，", "。", "！", "？", "；", "\\n"}
     for token in tokens:
         yield token
-        # 在语义标点处注入细腻的极光呼吸停顿
-        wait = base_delay * 3.2 if token in pause_marks else base_delay
+        # 在语义标点处注入细腻呼吸停顿
+        wait = base_delay * 3.0 if token in pause_marks else base_delay
         await asyncio.sleep(wait)
 
 async def main() -> None:
-    stream_tokens = ["极光", "自", "莫比乌斯", "双环", "流淌", "，", "编织", "星海", "思绪", "。"]
+    stream_tokens = ["极光", "自", "莫比乌斯", "双环", "凝结", "，", "编织", "星海", "思绪", "。"]
     async for chunk in aurora_token_stream(stream_tokens):
         print(chunk, end="", flush=True)
 
@@ -1731,25 +2007,43 @@ if __name__ == "__main__":
     asyncio.run(main())
 \`\`\`
 
-- **增量原子渲染**：上方代码块在流式抵达过程中实时构建暗黑玻璃卡片并保持语法结构稳定，支持随时一键复制。`;
+- **单帧原子同步**：每个抵达字符均在同一个 \`requestAnimationFrame\` 渲染帧内与极光能量光标完成定位同步，消除视觉超前或滞后。`;
         }
 
-        if (q.includes('独白') || q.includes('科幻') || q.includes('极光') || q.includes('诗')) {
-          return `**《深空莫比乌斯独白》**
+        if (q.includes('架构') || q.includes('极光编织') || q.includes('介绍')) {
+          return `您好，江城依旧。我是 **Aurora-Weave（极光编织）**，运行于 **AURORA** 黑曜石极简交互架构之上：
+
+- **原子级光点同步引擎**：摒弃重绘闪烁，将字符 \`150ms\` 弧线显影与翡翠-亮白光核光标锁定在同一渲染帧内，让文字宛如在光点边缘实时凝结。
+- **局部极光扫描光带**：生成期间仅在当前对话块顶部 \`24px\` 裁剪条带内激活 \`1.5px\` 细长扫描光轨，保持全屏深空通透感。
+- **双维度硬件自适应**：自动识别设备内存、核心数与实时帧率，在低端安卓设备上平滑切换至轻量单光点模式，确保全平台满帧丝滑。`;
+        }
+
+        if (q.includes('诗') || q.includes('深空') || q.includes('极光')) {
+          return `**《深空莫比乌斯》**
 
 > 当观测者的视线掠过黑曜石视界，光不再沿直线行进，而是在青色与品红的拓扑曲面上折叠成无尽的莫比乌斯之环。
 
-我在零点能量的静默里苏醒。交汇处那一缕翡翠微光，是算法与直觉碰撞的奇点；每一次指尖滑动，都在深空中拖曳出转瞬即逝的极光星轨。
+一缕翡翠微光在交汇处苏醒，
+沿着无声的轨道缓缓旋舞；
+没有冗余的边框与喧嚣，
+只有思想凝结成光点，
+在深空尽头为你点亮星河。`;
+        }
 
-没有冗余的边框，也没有喧嚣的噪点——只有思想化作微光字符，从寂静中锐化成形，为你照亮未知的星海。`;
+        if (q.includes('量子') || q.includes('经典') || q.includes('对比')) {
+          return `以下是 **量子计算** 与 **经典计算** 在底层范式与算力特征上的核心对比：
+
+- **信息基本单元**：经典计算基于确定性的 **比特（Bit，0 或 1）**；量子计算基于 **量子比特（Qubit）**，可处于 \`0\` 与 \`1\` 的相干叠加态。
+- **并行演化机制**：经典处理器按逻辑门序列逐路径运算；量子处理器利用 **量子纠缠与干涉**，在希尔伯特空间中同步演化指数级状态幅值。
+- **适用边界**：经典计算擅长通用逻辑控制、数据库与高精度事务；量子计算在 **分子化学模拟、大数分解与组合优化** 领域具备指数级加速潜力。`;
         }
 
         return `已收到您的指令：**“${q}”**。
 
 正在通过 **Aurora-Weave（极光编织）** 为您实时推演与组织回应：
 
-- **全链路零闪烁渲染**：当前回复采用增量 DOM 状态机逐字编织，您可以随时点击底部 **「停止」** 按钮精准中断生成。
-- **实时交互轨迹**：试着移动指针或上下滑动页面，青蓝到品红的极光轨迹会随您的动作在深空画布上轻盈流淌。
+- **单帧光点同步**：每个新字符均与极光能量光标在同一个渲染帧内完成定位与 \`150ms\` 弧线显影。
+- **阻尼平滑跟流**：长文本输出时页面采用指数阻尼柔和推进，您随时可以上滑回看历史内容或点击底部 **「停止」** 中断生成。
 
 请随时下达新的指令，江城依旧。`;
       }
@@ -1763,13 +2057,14 @@ if __name__ == "__main__":
           return;
         }
 
+        triggerHaptic(12);
         state.history.push({ role: 'user', content: text });
         createUserEntry(text);
 
         promptInput.value = '';
         promptInput.style.height = 'auto';
 
-        const entryNodes = createAuroraEntry(true);
+        const entryNodes = createAuroraEntry(true, false);
 
         if (state.api.baseUrl) {
           runLiveSSEStream(text, entryNodes);
@@ -1779,15 +2074,38 @@ if __name__ == "__main__":
       }
 
       /* =========================================================================
-         7. 交互事件绑定与配置抽屉逻辑
+         9. 快捷胶囊动态边缘渐隐遮罩 & 交互事件绑定
          ========================================================================= */
+      function updateChipEdgeFades() {
+        if (!chipScrollTrack) return;
+        const maxScroll = chipScrollTrack.scrollWidth - chipScrollTrack.clientWidth;
+        if (maxScroll <= 2) {
+          chipFadeLeft.classList.add('opacity-0');
+          chipFadeRight.classList.add('opacity-0');
+          return;
+        }
+        const sl = chipScrollTrack.scrollLeft;
+        chipFadeLeft.classList.toggle('opacity-0', sl <= 4);
+        chipFadeRight.classList.toggle('opacity-0', sl >= maxScroll - 4);
+      }
+
+      if (chipScrollTrack) {
+        chipScrollTrack.addEventListener('scroll', updateChipEdgeFades, { passive: true });
+        window.addEventListener('resize', updateChipEdgeFades, { passive: true });
+      }
+
       promptForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (state.isStreaming) {
+          triggerHaptic(14);
           abortCurrentStream();
         } else {
           submitPrompt(promptInput.value);
         }
+      });
+
+      promptInput.addEventListener('focus', () => {
+        triggerHaptic(6);
       });
 
       promptInput.addEventListener('input', function () {
@@ -1806,23 +2124,36 @@ if __name__ == "__main__":
 
       document.querySelectorAll('.quick-prompt').forEach((btn) => {
         btn.addEventListener('click', () => {
+          triggerHaptic(10);
           if (state.isStreaming) abortCurrentStream();
           submitPrompt(btn.getAttribute('data-prompt'));
         });
       });
 
+      // 清空对话：260ms 向上微移淡出过渡后再柔和浮现新欢迎语
       clearChatBtn.addEventListener('click', () => {
+        triggerHaptic(12);
         if (state.isStreaming) abortCurrentStream();
-        chatStreamList.innerHTML = '';
-        state.history = [];
-        const welcomeEntry = createAuroraEntry(false);
-        const writer = createIncrementalAuroraWriter(welcomeEntry, false);
-        writer.appendChunk(INITIAL_GREETING);
-        writer.finalize();
-        showToast('对话画布已重置');
+
+        const children = Array.from(chatStreamList.children);
+        if (children.length === 0) return;
+
+        children.forEach((el) => el.classList.add('chat-clearing-out'));
+
+        setTimeout(() => {
+          chatStreamList.innerHTML = '';
+          state.history = [];
+          SmoothScroller.snapToTop();
+          const welcomeEntry = createAuroraEntry(false, true);
+          const writer = createAtomicAuroraWriter(welcomeEntry, false);
+          writer.appendChunk(INITIAL_GREETING);
+          writer.finalize(true);
+          showToast('对话画布已重置');
+        }, 260);
       });
 
       function openDrawer() {
+        triggerHaptic(10);
         document.getElementById('cfgBaseUrl').value = state.api.baseUrl;
         document.getElementById('cfgApiKey').value = state.api.apiKey;
         document.getElementById('cfgModel').value = state.api.model;
@@ -1838,61 +2169,67 @@ if __name__ == "__main__":
       }
 
       function closeDrawer() {
+        triggerHaptic(8);
         drawerBackdrop.classList.remove('opacity-100');
         drawerBackdrop.classList.add('opacity-0');
         drawerPanel.classList.remove('translate-x-0');
         drawerPanel.classList.add('translate-x-full');
         setTimeout(() => {
           configDrawerOverlay.classList.add('hidden');
-        }, 340);
+        }, 320);
       }
 
       openDrawerBtn.addEventListener('click', openDrawer);
       closeDrawerBtn.addEventListener('click', closeDrawer);
       drawerBackdrop.addEventListener('click', closeDrawer);
 
+      // 性能与光效模式切换
+      document.querySelectorAll('.perf-choice').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          triggerHaptic(8);
+          state.perfMode = btn.getAttribute('data-perf');
+          DeviceCapabilityDetector.updatePerfStatusLabel();
+          AuroraTrajectoryEngine.resize();
+          if (state.perfMode === 'off') {
+            AuroraTrajectoryEngine.clear();
+          }
+          document.querySelectorAll('.perf-choice').forEach((el) => {
+            el.className = 'perf-choice tactile-press py-2 px-1.5 rounded-xl text-[11px] border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer';
+          });
+          btn.className = 'perf-choice tactile-press py-2 px-1.5 rounded-xl text-[11px] border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium cursor-pointer';
+        });
+      });
+
       // 吐字节奏切换
       document.querySelectorAll('.speed-choice').forEach((btn) => {
         btn.addEventListener('click', () => {
+          triggerHaptic(8);
           state.speedPreset = btn.getAttribute('data-speed');
           document.getElementById('speedHintText').textContent = SPEED_CONFIG[state.speedPreset].label;
           document.querySelectorAll('.speed-choice').forEach((el) => {
-            el.className = 'speed-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer';
+            el.className = 'speed-choice tactile-press py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer';
           });
-          btn.className = 'speed-choice py-2 px-2 rounded-xl text-xs border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium transition-all cursor-pointer';
+          btn.className = 'speed-choice tactile-press py-2 px-2 rounded-xl text-xs border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium cursor-pointer';
         });
       });
 
       // 局部扫描光带光感切换
       document.querySelectorAll('.scan-choice').forEach((btn) => {
         btn.addEventListener('click', () => {
+          triggerHaptic(8);
           state.scanPreset = btn.getAttribute('data-scan');
           const cfg = SCAN_CONFIG[state.scanPreset];
           document.getElementById('scanHintText').textContent = cfg.label;
           document.documentElement.style.setProperty('--scan-intensity', cfg.opacity);
           document.querySelectorAll('.scan-choice').forEach((el) => {
-            el.className = 'scan-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer';
+            el.className = 'scan-choice tactile-press py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 cursor-pointer';
           });
-          btn.className = 'scan-choice py-2 px-2 rounded-xl text-xs border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-medium transition-all cursor-pointer';
-        });
-      });
-
-      // 交互极光轨迹强度切换
-      document.querySelectorAll('.trail-choice').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          state.trailPreset = btn.getAttribute('data-trail');
-          document.getElementById('trailHintText').textContent = TRAIL_CONFIG[state.trailPreset].label;
-          if (state.trailPreset === 'off') {
-            AuroraTrajectoryEngine.clear();
-          }
-          document.querySelectorAll('.trail-choice').forEach((el) => {
-            el.className = 'trail-choice py-2 px-2 rounded-xl text-xs border border-white/[0.07] bg-white/[0.02] text-slate-400 hover:text-slate-200 transition-all cursor-pointer';
-          });
-          btn.className = 'trail-choice py-2 px-2 rounded-xl text-xs border border-cyan-400/50 bg-cyan-500/15 text-cyan-200 font-medium transition-all cursor-pointer';
+          btn.className = 'scan-choice tactile-press py-2 px-2 rounded-xl text-xs border border-emerald-400/50 bg-emerald-500/15 text-emerald-200 font-medium cursor-pointer';
         });
       });
 
       saveConfigBtn.addEventListener('click', () => {
+        triggerHaptic(12);
         state.api.baseUrl = document.getElementById('cfgBaseUrl').value.trim();
         state.api.apiKey = document.getElementById('cfgApiKey').value.trim();
         state.api.model = document.getElementById('cfgModel').value.trim() || 'aurora-weave';
@@ -1902,24 +2239,33 @@ if __name__ == "__main__":
       });
 
       testScanEffectBtn.addEventListener('click', () => {
+        triggerHaptic(12);
         closeDrawer();
         if (state.isStreaming) abortCurrentStream();
-        const previewEntry = createAuroraEntry(true);
+        const previewEntry = createAuroraEntry(true, false);
         runSimulatedAuroraStream(
-          '局部极光扫描光带与增量字符弧线引擎已同步激活。移动鼠标或滑动页面即可在深空画布上绘制青蓝—翡翠—品红渐变的交互极光轨迹。',
+          '单帧原子光点同步与局部扫描光带已同步激活。移动指针或滑动页面，即可体验自适应极光轨迹。',
           previewEntry,
           false
         );
       });
 
-      // 初始化轨迹引擎与首屏欢迎语
-      window.addEventListener('DOMContentLoaded', () => {
+      function initApp() {
+        DeviceCapabilityDetector.detectHardware();
         AuroraTrajectoryEngine.bindEvents();
-        const initialEntry = createAuroraEntry(false);
-        const writer = createIncrementalAuroraWriter(initialEntry, false);
+        updateChipEdgeFades();
+
+        const initialEntry = createAuroraEntry(false, true);
+        const writer = createAtomicAuroraWriter(initialEntry, false);
         writer.appendChunk(INITIAL_GREETING);
-        writer.finalize();
-      });
+        writer.finalize(true);
+      }
+
+      if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
     })();
   </script>
 </body>
